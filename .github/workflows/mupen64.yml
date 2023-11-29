@@ -23,6 +23,6 @@ jobs:
       
     - name: Upload
       uses: actions/upload-artifact@v2
-        with:
-          name: dlls
-          path: Assets/dll/*.dll
+      with:
+        name: dlls
+        path: Assets/dll/*.dll
