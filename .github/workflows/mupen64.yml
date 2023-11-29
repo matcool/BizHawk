@@ -19,5 +19,10 @@ jobs:
         toolset: 16.0
     
     - name: Build
-      run: msbuild libmupen64plus/mupen64plus-sln/projects/msvc11/mupen64plus.sln
+      run: msbuild libmupen64plus/mupen64plus-sln/projects/msvc11/mupen64plus.sln /p:Configuration=Release
       
+    - name: Upload
+      uses: actions/upload-artifact@v2
+        with:
+          name: dlls
+          path: Assets/dll/*.dll
