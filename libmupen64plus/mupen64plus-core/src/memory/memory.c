@@ -3559,6 +3559,8 @@ void write_flashram_commandd(void)
 
 static unsigned int lastwrite = 0;
 
+#define MEMORY_WRAP_ADDR 0x0FFFFFFF
+
 void read_rom(void)
 {
     if (lastwrite)
@@ -3567,23 +3569,23 @@ void read_rom(void)
         lastwrite = 0;
     }
     else
-        *rdword = *((unsigned int *)(rom + (address & 0x03FFFFFF)));
+        *rdword = *((unsigned int *)(rom + (address & MEMORY_WRAP_ADDR)));
 }
 
 void read_romb(void)
 {
-    *rdword = *(rom + ((address^S8) & 0x03FFFFFF));
+    *rdword = *(rom + ((address^S8) & MEMORY_WRAP_ADDR));
 }
 
 void read_romh(void)
 {
-    *rdword = *((unsigned short *)(rom + ((address^S16) & 0x03FFFFFF)));
+    *rdword = *((unsigned short *)(rom + ((address^S16) & MEMORY_WRAP_ADDR)));
 }
 
 void read_romd(void)
 {
-    *rdword = ((unsigned long long)(*((unsigned int *)(rom+(address&0x03FFFFFF))))<<32)|
-              *((unsigned int *)(rom + ((address+4)&0x03FFFFFF)));
+    *rdword = ((unsigned long long)(*((unsigned int *)(rom+(address&MEMORY_WRAP_ADDR))))<<32)|
+              *((unsigned int *)(rom + ((address+4)&MEMORY_WRAP_ADDR)));
 }
 
 void write_rom(void)
