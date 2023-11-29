@@ -934,7 +934,7 @@ void FrameBufferManager::FrameBufferReadByCPU( uint32 addr )
     {
         // Check if this is the depth buffer
         uint32 size = 2*g_RecentCIInfo[0].dwWidth*g_RecentCIInfo[0].dwHeight;
-        addr &= 0x3FFFFFFF;
+        addr &= 0xFFFFFFFF;
 
         if( addr >= g_ZI.dwAddr && addr < g_ZI.dwAddr + size )
         {

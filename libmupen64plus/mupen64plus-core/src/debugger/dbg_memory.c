@@ -339,7 +339,7 @@ uint32 read_memory_32(uint32 addr){
       else
         return M64P_MEM_INVALID;
     case M64P_MEM_ROM:
-      return *((uint32 *)(rom + (addr & 0x03FFFFFF)));
+      return *((uint32 *)(rom + (addr & 0x0FFFFFFF)));
     case M64P_MEM_RDRAMREG:
       if (addrlow < 0x28)
         return *(readrdramreg[addrlow&0xfffc]);

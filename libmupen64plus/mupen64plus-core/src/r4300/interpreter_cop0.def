@@ -50,10 +50,10 @@ DECLARE_INSTRUCTION(MTC0)
     case 1:    // Random
       break;
     case 2:    // EntryLo0
-      EntryLo0 = (unsigned int) rrt & 0x3FFFFFFF;
+      EntryLo0 = (unsigned int) rrt & 0xFFFFFFFF;
       break;
     case 3:    // EntryLo1
-      EntryLo1 = (unsigned int) rrt & 0x3FFFFFFF;
+      EntryLo1 = (unsigned int) rrt & 0xFFFFFFFF;
       break;
     case 4:    // Context
       Context = ((unsigned int) rrt & 0xFF800000) | (Context & 0x007FFFF0);

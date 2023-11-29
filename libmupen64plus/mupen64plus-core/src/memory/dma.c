@@ -182,7 +182,7 @@ void dma_pi_write(void)
     }
 
     longueur = (pi_register.pi_wr_len_reg & 0xFFFFFF)+1;
-    i = (pi_register.pi_cart_addr_reg-0x10000000)&0x3FFFFFF;
+    i = (pi_register.pi_cart_addr_reg-0x10000000)&0xFFFFFFF;
     longueur = (i + (int) longueur) > rom_size ?
                (rom_size - i) : longueur;
     longueur = (pi_register.pi_dram_addr_reg + longueur) > 0x7FFFFF ?
@@ -205,7 +205,7 @@ void dma_pi_write(void)
             unsigned long rdram_address2 = pi_register.pi_dram_addr_reg+i+0xa0000000;
 
             ((unsigned char*)rdram)[(pi_register.pi_dram_addr_reg+i)^S8]=
-                rom[(((pi_register.pi_cart_addr_reg-0x10000000)&0x3FFFFFF)+i)^S8];
+                rom[(((pi_register.pi_cart_addr_reg-0x10000000)&0xFFFFFFF)+i)^S8];
 
             if (!invalid_code[rdram_address1>>12])
             {
@@ -235,7 +235,7 @@ void dma_pi_write(void)
         for (i=0; i<(int)longueur; i++)
         {
             ((unsigned char*)rdram)[(pi_register.pi_dram_addr_reg+i)^S8]=
-                rom[(((pi_register.pi_cart_addr_reg-0x10000000)&0x3FFFFFF)+i)^S8];
+                rom[(((pi_register.pi_cart_addr_reg-0x10000000)&0xFFFFFFF)+i)^S8];
         }
     }
 

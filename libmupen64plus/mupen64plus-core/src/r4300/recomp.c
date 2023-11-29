@@ -91,7 +91,7 @@ static void recompile_standard_i_type(void)
 
 static void recompile_standard_j_type(void)
 {
-   dst->f.j.inst_index = src & 0x3FFFFFF;
+   dst->f.j.inst_index = src & 0xFFFFFFF;
 }
 
 static void recompile_standard_r_type(void)
