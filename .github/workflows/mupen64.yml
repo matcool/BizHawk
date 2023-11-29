@@ -10,8 +10,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        submodules: true
+
+		- name: get modules
+      run: |
+				git submodule init
+				git submodule update libmupen64plus/mupen64plus-win32-deps
         
     - uses: ilammy/msvc-dev-cmd@v1
       with:
